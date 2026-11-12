@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MinigameData" format=3 uid="uid://tcq1kkvio0ak"]
+
+[ext_resource type="Script" uid="uid://drgtpugs7dwxs" path="res://Scripts/Minigames/MinigameData.gd" id="1_ny1o3"]
+[ext_resource type="Texture2D" uid="uid://bi6ercdq2vvjf" path="res://icon.svg" id="2_ppo3l"]
+
+[resource]
+script = ExtResource("1_ny1o3")
+minigameName = "Pinguinos sobre hielo"
+description = "¡Sigue el ritmo y no te tropieces!
+El pinguino mas marchoso gana."
+tutorialImage = ExtResource("2_ppo3l")
+developersAndPosition = Dictionary[String, String]({
+"Tomas Ramirez (ESPelusa01)": "Arte, sonido y programacion."
+})

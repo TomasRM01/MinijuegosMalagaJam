@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://4yr7cuk4xhgp"]
+
+[ext_resource type="Script" uid="uid://xr54y7xsiobb" path="res://Minigames/PenguinsOnIceMinigame/Scripts/MinigamePenguinsOnIce.gd" id="1_sx033"]
+[ext_resource type="Resource" uid="uid://tcq1kkvio0ak" path="res://Minigames/PenguinsOnIceMinigame/Scripts/PenguinsOnIceData.tres" id="2_shv3y"]
+
+[node name="PenguinsOnIceMinigame" type="Node" unique_id=270370904]
+script = ExtResource("1_sx033")
+minigameData = ExtResource("2_shv3y")
