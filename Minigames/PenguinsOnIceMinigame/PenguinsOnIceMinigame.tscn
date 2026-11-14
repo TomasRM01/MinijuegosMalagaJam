@@ -2,7 +2,138 @@
 
 [ext_resource type="Script" uid="uid://xr54y7xsiobb" path="res://Minigames/PenguinsOnIceMinigame/Scripts/MinigamePenguinsOnIce.gd" id="1_sx033"]
 [ext_resource type="Resource" uid="uid://tcq1kkvio0ak" path="res://Minigames/PenguinsOnIceMinigame/Scripts/PenguinsOnIceData.tres" id="2_shv3y"]
+[ext_resource type="Script" uid="uid://dalssxm0qj4fo" path="res://Minigames/PenguinsOnIceMinigame/Scripts/penguins_minigame_manager.gd" id="3_4lugv"]
+[ext_resource type="Script" uid="uid://cl371ifgmqefv" path="res://Minigames/PenguinsOnIceMinigame/temporal_gui.gd" id="4_lhu4m"]
+[ext_resource type="Texture2D" uid="uid://ftes20u8rdhn" path="res://Minigames/PenguinsOnIceMinigame/Sprites/PenguinsOnIce.jpg" id="5_a2g8r"]
+[ext_resource type="Texture2D" uid="uid://tyajbbcxkkb6" path="res://Minigames/PenguinsOnIceMinigame/Sprites/PenguinsOnIce2.jpg" id="6_a2g8r"]
 
 [node name="PenguinsOnIceMinigame" type="Node" unique_id=270370904]
 script = ExtResource("1_sx033")
+minigame_time = 10.0
+number_of_steps = 8
 minigameData = ExtResource("2_shv3y")
+
+[node name="PenguinsMinigameManager" type="Node" parent="." unique_id=425171757]
+script = ExtResource("3_4lugv")
+
+[node name="MinigameTimer" type="Timer" parent="PenguinsMinigameManager" unique_id=255962559]
+one_shot = true
+
+[node name="MetronomeTimer" type="Timer" parent="PenguinsMinigameManager" unique_id=1829133983]
+
+[node name="TemporalGUI" type="Control" parent="PenguinsMinigameManager" unique_id=1545542616]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_lhu4m")
+
+[node name="Metronome" type="Label" parent="PenguinsMinigameManager/TemporalGUI" unique_id=1615504265]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 15.0
+offset_right = 289.0
+offset_bottom = 134.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 87
+text = "Metronome"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointsJ1" type="Label" parent="PenguinsMinigameManager/TemporalGUI" unique_id=965928454]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -119.0
+offset_right = 392.0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.34901962, 0.015686275, 0, 1)
+theme_override_font_sizes/font_size = 87
+text = "Points J1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointsJ2" type="Label" parent="PenguinsMinigameManager/TemporalGUI" unique_id=739673405]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -483.0
+offset_top = -121.0
+offset_right = -91.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.101960786, 0.35686275, 0.003921569, 1)
+theme_override_font_sizes/font_size = 87
+text = "Points J2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointsJ3" type="Label" parent="PenguinsMinigameManager/TemporalGUI" unique_id=492715035]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -119.0
+offset_right = 419.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.34509805, 0.2901961, 0, 1)
+theme_override_font_sizes/font_size = 87
+text = "Points J3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointsJ4" type="Label" parent="PenguinsMinigameManager/TemporalGUI" unique_id=286452984]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -392.0
+offset_top = -119.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.007843138, 0.050980393, 0.39607844, 1)
+theme_override_font_sizes/font_size = 87
+text = "Points J4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Background" type="TextureRect" parent="." unique_id=35745805]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_a2g8r")
+
+[node name="Background2" type="TextureRect" parent="." unique_id=1963826893]
+visible = false
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_a2g8r")

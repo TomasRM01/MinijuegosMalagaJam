@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cpdei0c4gficn" path="res://Sprites/GenericButton.png" id="1_hqt01"]
 [ext_resource type="Script" uid="uid://dqd747do6jri1" path="res://Scripts/PlayerButton.gd" id="2_2ny7y"]
+[ext_resource type="PackedScene" uid="uid://4yr7cuk4xhgp" path="res://Minigames/PenguinsOnIceMinigame/PenguinsOnIceMinigame.tscn" id="3_eub5x"]
 [ext_resource type="Script" uid="uid://cogkluld14x1i" path="res://Scripts/Controllers/RoundController.gd" id="4_2ny7y"]
 [ext_resource type="Script" uid="uid://c8xhspffwdh2y" path="res://Scripts/Controllers/PlayerSelectionController.gd" id="4_mpou1"]
 [ext_resource type="Script" uid="uid://vehy28ho4b6n" path="res://Scripts/PlayerSelectionContent.gd" id="4_y4jts"]
-[ext_resource type="PackedScene" uid="uid://cjrtfysm3veyl" path="res://Minigames/ServingFoodMinigame/ServingFoodMinigame.tscn" id="5_f0lok"]
 [ext_resource type="Script" uid="uid://bcnuavmcwbljo" path="res://Scripts/TransitionEffect.gd" id="7_eub5x"]
 [ext_resource type="Material" uid="uid://bo1xiuvw38hdc" path="res://Materials/UVMovementMaterial.tres" id="7_mpou1"]
 [ext_resource type="Texture2D" uid="uid://17dpn5lmdt4y" path="res://Sprites/fondoPlaceholder.png" id="8_eub5x"]
@@ -18,7 +18,7 @@ pressSpaceToStartText = NodePath("../PlayerSelectionContent/PressSpaceToStart")
 
 [node name="RoundController" type="Node" parent="." unique_id=1558029353]
 script = ExtResource("4_2ny7y")
-availableMinigames = Array[PackedScene]([ExtResource("5_f0lok")])
+availableMinigames = Array[PackedScene]([ExtResource("3_eub5x")])
 winsNeededToFinish = 1
 
 [node name="MinigameContainer" type="Node" parent="." unique_id=741273415]
