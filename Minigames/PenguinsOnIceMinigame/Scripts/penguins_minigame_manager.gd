@@ -1,10 +1,13 @@
 extends Node
 
 signal timer_ended
-signal metronome_ended
+signal metronome_ended # For points
+signal submetronome_ended # For animations
 
 @onready var minigame_timer: Timer = $MinigameTimer
 @onready var metronome_timer: Timer = $MetronomeTimer
+@onready var submetronome_timer: Timer = $SubMetronomeTimer
+
 
 var rhythm_points_array: Array[float] = [-1.0, -1.0, -1.0, -1.0]
 var is_step_taken_array: Array[float] = [false, false, false, false]
@@ -12,8 +15,10 @@ var players_ids_array: Array[int]
 var steps_to_take
 var time_between_steps
 var steps_taken = 0
-var success_percent = 0.3
-
+# in seconds, this is the window of time that the players have to count the entry
+var success_delay = 0.3
+# in seconds, this is used to play the animations before the input window closes
+var calibration_delay = 0.2
 
 func _ready() -> void:
 	minigame_timer.timeout.connect(_on_timer_ended)
@@ -43,6 +48,13 @@ func _setup_metronome(minigame_time, number_of_steps) -> void:
 	metronome_timer.wait_time = time_between_steps
 	metronome_timer.timeout.connect(_on_metronome_timeout)
 	metronome_timer.start()
+	submetronome_timer.wait_time = time_between_steps - calibration_delay
+	submetronome_timer.timeout.connect(_on_submetronome_timeout)
+	submetronome_timer.start()
+
+
+func _on_submetronome_timeout() -> void:
+	submetronome_ended.emit()
 
 
 func _on_metronome_timeout() -> void:
@@ -55,6 +67,8 @@ func _on_metronome_timeout() -> void:
 	print("this is the " + str(steps_taken) + " step")
 	if steps_taken == steps_to_take:
 		metronome_timer.stop()
+	else:
+		submetronome_timer.start()
 
 
 func _on_timer_ended() -> void:
@@ -74,8 +88,8 @@ func on_player_pressed(player_id) -> void:
 	is_step_taken_array[player_id] = true
 	
 	print("player " + str(player_id) + " pressed with " + str(metronome_timer.time_left) + " time left")
-	if metronome_timer.time_left < time_between_steps * success_percent:
-		if metronome_timer.time_left == 0:
+	if metronome_timer.time_left < success_delay:
+		if metronome_timer.time_left <= 0.2:
 			print("player " + str(player_id) + " PERFECT!!!")
 			rhythm_points_array[player_id] += time_between_steps * 2
 		else:

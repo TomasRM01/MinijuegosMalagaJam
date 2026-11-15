@@ -1,0 +1,22 @@
+extends AnimatedSprite2D
+
+@onready var penguins_minigame_manager: Node = $".."
+
+var step_right: bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	play("default")
+	penguins_minigame_manager.submetronome_ended.connect(_play_step_animation)
+
+func _play_step_animation() -> void:
+	if step_right:
+		play("step_right")
+	else:
+		play("step_left")
+	step_right = !step_right
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass

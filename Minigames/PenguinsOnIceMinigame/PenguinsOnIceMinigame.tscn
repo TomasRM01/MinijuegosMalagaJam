@@ -4,13 +4,109 @@
 [ext_resource type="Resource" uid="uid://tcq1kkvio0ak" path="res://Minigames/PenguinsOnIceMinigame/Scripts/PenguinsOnIceData.tres" id="2_shv3y"]
 [ext_resource type="Script" uid="uid://dalssxm0qj4fo" path="res://Minigames/PenguinsOnIceMinigame/Scripts/penguins_minigame_manager.gd" id="3_4lugv"]
 [ext_resource type="Script" uid="uid://cl371ifgmqefv" path="res://Minigames/PenguinsOnIceMinigame/temporal_gui.gd" id="4_lhu4m"]
-[ext_resource type="Texture2D" uid="uid://ftes20u8rdhn" path="res://Minigames/PenguinsOnIceMinigame/Sprites/PenguinsOnIce.jpg" id="5_a2g8r"]
-[ext_resource type="Texture2D" uid="uid://tyajbbcxkkb6" path="res://Minigames/PenguinsOnIceMinigame/Sprites/PenguinsOnIce2.jpg" id="6_a2g8r"]
+[ext_resource type="Texture2D" uid="uid://bjtqmwah526w5" path="res://Minigames/PenguinsOnIceMinigame/Sprites/RepeatingBackground.png" id="4_qg0cy"]
+[ext_resource type="Script" uid="uid://h8lanrifyor8" path="res://Minigames/PenguinsOnIceMinigame/sprite_2d.gd" id="5_h8pre"]
+[ext_resource type="Texture2D" uid="uid://crfohhtkodd2h" path="res://Minigames/PenguinsOnIceMinigame/Sprites/pinguino1.png" id="5_qg0cy"]
+[ext_resource type="Texture2D" uid="uid://1fcssmkff04o" path="res://Minigames/PenguinsOnIceMinigame/Sprites/pinguino2.png" id="6_h8pre"]
+[ext_resource type="Texture2D" uid="uid://cw0pwjj5stxsv" path="res://Minigames/PenguinsOnIceMinigame/Sprites/pinguino3.png" id="7_lio8g"]
+[ext_resource type="Texture2D" uid="uid://dhxyv8l02a8pr" path="res://Minigames/PenguinsOnIceMinigame/Sprites/pinguino4.png" id="8_twanv"]
+[ext_resource type="Texture2D" uid="uid://b8a3kwswexi8q" path="res://Minigames/PenguinsOnIceMinigame/Sprites/MetronomeAnimationSpriteSheet.png" id="9_h8pre"]
+[ext_resource type="Script" uid="uid://n2cebx7jyypw" path="res://Minigames/PenguinsOnIceMinigame/animated_sprite_2d.gd" id="11_lio8g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7t7mt"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qg0cy")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bmrb2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_h8pre")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7oi2q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_lio8g")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l0vo5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_twanv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twanv"]
+atlas = ExtResource("9_h8pre")
+region = Rect2(192, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lio8g"]
+atlas = ExtResource("9_h8pre")
+region = Rect2(0, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t7mt"]
+atlas = ExtResource("9_h8pre")
+region = Rect2(384, 0, 192, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tgb8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twanv")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lio8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t7mt")
+}],
+"loop": 0,
+"name": &"step_left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lio8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twanv")
+}],
+"loop": 0,
+"name": &"step_right",
+"speed": 10.0
+}]
 
 [node name="PenguinsOnIceMinigame" type="Node" unique_id=270370904]
 script = ExtResource("1_sx033")
-minigame_time = 10.0
-number_of_steps = 8
+minigame_time = 25.0
+number_of_steps = 80
 minigameData = ExtResource("2_shv3y")
 
 [node name="PenguinsMinigameManager" type="Node" parent="." unique_id=425171757]
@@ -19,13 +115,67 @@ script = ExtResource("3_4lugv")
 [node name="MinigameTimer" type="Timer" parent="PenguinsMinigameManager" unique_id=255962559]
 one_shot = true
 
+[node name="SubMetronomeTimer" type="Timer" parent="PenguinsMinigameManager" unique_id=1945160291]
+one_shot = true
+
 [node name="MetronomeTimer" type="Timer" parent="PenguinsMinigameManager" unique_id=1829133983]
+
+[node name="Background" type="Sprite2D" parent="PenguinsMinigameManager" unique_id=2113386204]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(960, 539.99994)
+scale = Vector2(10, 10)
+texture = ExtResource("4_qg0cy")
+region_enabled = true
+region_rect = Rect2(0, 0, 192, 108)
+script = ExtResource("5_h8pre")
+
+[node name="Player1PenguinPosition" type="Node2D" parent="PenguinsMinigameManager" unique_id=787344938]
+position = Vector2(540, 771)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager/Player1PenguinPosition" unique_id=610379194]
+texture_filter = 1
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_7t7mt")
+
+[node name="Player2PenguinPosition" type="Node2D" parent="PenguinsMinigameManager" unique_id=1776037199]
+position = Vector2(844, 771)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager/Player2PenguinPosition" unique_id=486850541]
+texture_filter = 1
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_bmrb2")
+
+[node name="Player3PenguinPosition" type="Node2D" parent="PenguinsMinigameManager" unique_id=1137915386]
+position = Vector2(1121, 769)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager/Player3PenguinPosition" unique_id=471599148]
+texture_filter = 1
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_7oi2q")
+
+[node name="Player4PenguinPosition" type="Node2D" parent="PenguinsMinigameManager" unique_id=1932946239]
+position = Vector2(1425, 760)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager/Player4PenguinPosition" unique_id=1102818668]
+texture_filter = 1
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_l0vo5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager" unique_id=1374849094]
+texture_filter = 1
+position = Vector2(960, 540)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_tgb8y")
+script = ExtResource("11_lio8g")
 
 [node name="TemporalGUI" type="Control" parent="PenguinsMinigameManager" unique_id=1545542616]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 6.1035156e-05
+offset_top = 6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_lhu4m")
@@ -35,13 +185,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -208.0
-offset_top = 15.0
-offset_right = 289.0
-offset_bottom = 134.0
+offset_left = -257.0
+offset_top = 297.0
+offset_right = 240.0
+offset_bottom = 416.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 87
 text = "Metronome"
 horizontal_alignment = 1
@@ -56,7 +206,7 @@ offset_top = -119.0
 offset_right = 392.0
 grow_vertical = 0
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.34901962, 0.015686275, 0, 1)
+theme_override_colors/font_color = Color(0.9607843, 0.32941177, 0.58431375, 1)
 theme_override_font_sizes/font_size = 87
 text = "Points J1"
 horizontal_alignment = 1
@@ -76,7 +226,7 @@ offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.101960786, 0.35686275, 0.003921569, 1)
+theme_override_colors/font_color = Color(0.6431373, 0.3372549, 0.98039216, 1)
 theme_override_font_sizes/font_size = 87
 text = "Points J2"
 horizontal_alignment = 1
@@ -95,7 +245,7 @@ offset_right = 419.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.34509805, 0.2901961, 0, 1)
+theme_override_colors/font_color = Color(0.35686275, 0.98039216, 0.3372549, 1)
 theme_override_font_sizes/font_size = 87
 text = "Points J3"
 horizontal_alignment = 1
@@ -113,27 +263,8 @@ offset_top = -119.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.007843138, 0.050980393, 0.39607844, 1)
+theme_override_colors/font_color = Color(0.93333334, 0.98039216, 0.3372549, 1)
 theme_override_font_sizes/font_size = 87
 text = "Points J4"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Background" type="TextureRect" parent="." unique_id=35745805]
-z_index = -1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_a2g8r")
-
-[node name="Background2" type="TextureRect" parent="." unique_id=1963826893]
-visible = false
-z_index = -1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_a2g8r")

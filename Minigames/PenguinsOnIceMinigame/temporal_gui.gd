@@ -7,17 +7,11 @@ extends Control
 @onready var points_j4_text: Label = $PointsJ4
 
 @onready var penguins_minigame_manager: Node = $".."
-@onready var background: TextureRect = $"../../Background"
-@onready var background2: TextureRect = $"../../Background2"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	penguins_minigame_manager.metronome_ended.connect(_on_metronome_ends)
+	pass
 
-
-func _on_metronome_ends():
-	background.visible = !background.visible
-	background2.visible = !background2.visible
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
