@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@onready var penguins_minigame_manager: Node = $".."
+@onready var penguins_minigame_manager: Node = $"../.."
 
 var step_right: bool = false
 
@@ -10,6 +10,7 @@ func _ready() -> void:
 	penguins_minigame_manager.submetronome_ended.connect(_play_step_animation)
 
 func _play_step_animation() -> void:
+	speed_scale = 1.0 / penguins_minigame_manager.time_between_steps
 	if step_right:
 		play("step_right")
 	else:

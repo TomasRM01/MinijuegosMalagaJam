@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tyajbbcxkkb6"
-path="res://.godot/imported/PenguinsOnIce2.jpg-a1dbe3a9a34c0d00c9d99cade9f05218.ctex"
+uid="uid://beqikdsbd8al"
+path="res://.godot/imported/penguinNPCSpriteSheet.png-63b7fb0cf18909f1ee3de38dcb98a5d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/PenguinsOnIceMinigame/Sprites/PenguinsOnIce2.jpg"
-dest_files=["res://.godot/imported/PenguinsOnIce2.jpg-a1dbe3a9a34c0d00c9d99cade9f05218.ctex"]
+source_file="res://Minigames/PenguinsOnIceMinigame/Sprites/penguinNPCSpriteSheet.png"
+dest_files=["res://.godot/imported/penguinNPCSpriteSheet.png-63b7fb0cf18909f1ee3de38dcb98a5d6.ctex"]
 
 [params]
 

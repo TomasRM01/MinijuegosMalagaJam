@@ -3,15 +3,79 @@
 [ext_resource type="Script" uid="uid://xr54y7xsiobb" path="res://Minigames/PenguinsOnIceMinigame/Scripts/MinigamePenguinsOnIce.gd" id="1_sx033"]
 [ext_resource type="Resource" uid="uid://tcq1kkvio0ak" path="res://Minigames/PenguinsOnIceMinigame/Scripts/PenguinsOnIceData.tres" id="2_shv3y"]
 [ext_resource type="Script" uid="uid://dalssxm0qj4fo" path="res://Minigames/PenguinsOnIceMinigame/Scripts/penguins_minigame_manager.gd" id="3_4lugv"]
-[ext_resource type="Script" uid="uid://cl371ifgmqefv" path="res://Minigames/PenguinsOnIceMinigame/temporal_gui.gd" id="4_lhu4m"]
-[ext_resource type="Texture2D" uid="uid://bjtqmwah526w5" path="res://Minigames/PenguinsOnIceMinigame/Sprites/RepeatingBackground.png" id="4_qg0cy"]
-[ext_resource type="Script" uid="uid://h8lanrifyor8" path="res://Minigames/PenguinsOnIceMinigame/sprite_2d.gd" id="5_h8pre"]
+[ext_resource type="Texture2D" uid="uid://caifw0dj04n7v" path="res://Minigames/PenguinsOnIceMinigame/Sprites/RepeatingBackground.png" id="4_7t7mt"]
+[ext_resource type="Script" uid="uid://cl371ifgmqefv" path="res://Minigames/PenguinsOnIceMinigame/Scripts/temporal_gui.gd" id="4_lhu4m"]
+[ext_resource type="Script" uid="uid://h8lanrifyor8" path="res://Minigames/PenguinsOnIceMinigame/Scripts/sprite_2d.gd" id="5_h8pre"]
 [ext_resource type="Texture2D" uid="uid://crfohhtkodd2h" path="res://Minigames/PenguinsOnIceMinigame/Sprites/pinguino1.png" id="5_qg0cy"]
 [ext_resource type="Texture2D" uid="uid://1fcssmkff04o" path="res://Minigames/PenguinsOnIceMinigame/Sprites/pinguino2.png" id="6_h8pre"]
 [ext_resource type="Texture2D" uid="uid://cw0pwjj5stxsv" path="res://Minigames/PenguinsOnIceMinigame/Sprites/pinguino3.png" id="7_lio8g"]
+[ext_resource type="Script" uid="uid://n2cebx7jyypw" path="res://Minigames/PenguinsOnIceMinigame/Scripts/animated_sprite_2d.gd" id="7_twanv"]
 [ext_resource type="Texture2D" uid="uid://dhxyv8l02a8pr" path="res://Minigames/PenguinsOnIceMinigame/Sprites/pinguino4.png" id="8_twanv"]
 [ext_resource type="Texture2D" uid="uid://b8a3kwswexi8q" path="res://Minigames/PenguinsOnIceMinigame/Sprites/MetronomeAnimationSpriteSheet.png" id="9_h8pre"]
-[ext_resource type="Script" uid="uid://n2cebx7jyypw" path="res://Minigames/PenguinsOnIceMinigame/animated_sprite_2d.gd" id="11_lio8g"]
+[ext_resource type="Texture2D" uid="uid://beqikdsbd8al" path="res://Minigames/PenguinsOnIceMinigame/Sprites/penguinNPCSpriteSheet.png" id="10_7t7mt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_noisi"]
+atlas = ExtResource("10_7t7mt")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gij8"]
+atlas = ExtResource("10_7t7mt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g53yu"]
+atlas = ExtResource("10_7t7mt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd34a"]
+atlas = ExtResource("10_7t7mt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj43o"]
+atlas = ExtResource("10_7t7mt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcyi6"]
+atlas = ExtResource("10_7t7mt")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l0vo5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_noisi")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gij8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g53yu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd34a")
+}],
+"loop": 0,
+"name": &"step_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj43o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcyi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_noisi")
+}],
+"loop": 0,
+"name": &"step_right",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7t7mt"]
 resource_local_to_scene = true
@@ -47,7 +111,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_l0vo5"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gxhjp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -58,55 +122,73 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_twanv"]
-atlas = ExtResource("9_h8pre")
-region = Rect2(192, 0, 192, 108)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lio8g"]
-atlas = ExtResource("9_h8pre")
-region = Rect2(0, 0, 192, 108)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7t7mt"]
 atlas = ExtResource("9_h8pre")
 region = Rect2(384, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxhjp"]
+atlas = ExtResource("9_h8pre")
+region = Rect2(576, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbokq"]
+atlas = ExtResource("9_h8pre")
+region = Rect2(768, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q26go"]
+atlas = ExtResource("9_h8pre")
+region = Rect2(960, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmrb2"]
+atlas = ExtResource("9_h8pre")
+region = Rect2(0, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oi2q"]
+atlas = ExtResource("9_h8pre")
+region = Rect2(192, 0, 192, 108)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tgb8y"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_twanv")
+"texture": SubResource("AtlasTexture_7t7mt")
 }],
 "loop": 0,
 "name": &"default",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lio8g")
+"texture": SubResource("AtlasTexture_gxhjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbokq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q26go")
+}],
+"loop": 0,
+"name": &"step_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmrb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7oi2q")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7t7mt")
 }],
 "loop": 0,
-"name": &"step_left",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lio8g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_twanv")
-}],
-"loop": 0,
 "name": &"step_right",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [node name="PenguinsOnIceMinigame" type="Node" unique_id=270370904]
 script = ExtResource("1_sx033")
-minigame_time = 25.0
-number_of_steps = 80
+minigame_time = 100.0
+number_of_steps = 160
 minigameData = ExtResource("2_shv3y")
 
 [node name="PenguinsMinigameManager" type="Node" parent="." unique_id=425171757]
@@ -125,13 +207,22 @@ texture_filter = 1
 texture_repeat = 2
 position = Vector2(960, 539.99994)
 scale = Vector2(10, 10)
-texture = ExtResource("4_qg0cy")
+texture = ExtResource("4_7t7mt")
 region_enabled = true
 region_rect = Rect2(0, 0, 192, 108)
 script = ExtResource("5_h8pre")
 
+[node name="BackNPCPenguinPosition" type="Node2D" parent="PenguinsMinigameManager" unique_id=1078394553]
+position = Vector2(260, 770)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager/BackNPCPenguinPosition" unique_id=1830646943]
+texture_filter = 1
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_l0vo5")
+script = ExtResource("7_twanv")
+
 [node name="Player1PenguinPosition" type="Node2D" parent="PenguinsMinigameManager" unique_id=787344938]
-position = Vector2(540, 771)
+position = Vector2(520, 771)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager/Player1PenguinPosition" unique_id=610379194]
 texture_filter = 1
@@ -139,7 +230,7 @@ scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_7t7mt")
 
 [node name="Player2PenguinPosition" type="Node2D" parent="PenguinsMinigameManager" unique_id=1776037199]
-position = Vector2(844, 771)
+position = Vector2(824, 771)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager/Player2PenguinPosition" unique_id=486850541]
 texture_filter = 1
@@ -147,7 +238,7 @@ scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_bmrb2")
 
 [node name="Player3PenguinPosition" type="Node2D" parent="PenguinsMinigameManager" unique_id=1137915386]
-position = Vector2(1121, 769)
+position = Vector2(1101, 769)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager/Player3PenguinPosition" unique_id=471599148]
 texture_filter = 1
@@ -155,19 +246,32 @@ scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_7oi2q")
 
 [node name="Player4PenguinPosition" type="Node2D" parent="PenguinsMinigameManager" unique_id=1932946239]
-position = Vector2(1425, 760)
+position = Vector2(1405, 760)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager/Player4PenguinPosition" unique_id=1102818668]
 texture_filter = 1
 scale = Vector2(10, 10)
-sprite_frames = SubResource("SpriteFrames_l0vo5")
+sprite_frames = SubResource("SpriteFrames_gxhjp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager" unique_id=1374849094]
+[node name="FrontNPCPenguinPosition" type="Node2D" parent="PenguinsMinigameManager" unique_id=1556399060]
+position = Vector2(1670, 770)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager/FrontNPCPenguinPosition" unique_id=1295961871]
+texture_filter = 1
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_l0vo5")
+animation = &"step_right"
+script = ExtResource("7_twanv")
+
+[node name="MetronomeGuide" type="Node2D" parent="PenguinsMinigameManager" unique_id=2144586135]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PenguinsMinigameManager/MetronomeGuide" unique_id=1374849094]
 texture_filter = 1
 position = Vector2(960, 540)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_tgb8y")
-script = ExtResource("11_lio8g")
+animation = &"step_right"
+script = ExtResource("7_twanv")
 
 [node name="TemporalGUI" type="Control" parent="PenguinsMinigameManager" unique_id=1545542616]
 layout_mode = 3
